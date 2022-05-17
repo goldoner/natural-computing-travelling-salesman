@@ -165,8 +165,8 @@ class Tsp:
         return copies
 
     # run the program
-    def run(self, iter=1000):
-
+    def run(self, iter=4000):
+        f = open("resources/resources.csv", "a")
         total = []
         self.initialize()
         for i in range(iter):
@@ -177,22 +177,40 @@ class Tsp:
         total.sort(key=operator.itemgetter(0))
         found = total[0]
         self.final = list(found[1])
-        print("The sortest path under {} iterations is {} with cost {}".format(iter, found[1], found[0]))
+        print("The resources {} iterations is {} with cost {}".format(iter, found[1], found[0]))
+        f.write("{}".format(found[0]))
+        f.write("\n")
+        f.close()
 
+#resources
 
-t = Tsp()
-t.run()
+#Food
+food = Tsp()
+food.run()
+fin = food.final
 
-fin = t.final
+#Water
+water = Tsp()
+water.run()
+wat = water.final
 
 result_edges = []
+result_edges1 = []
 
-print(len(fin))
+
+#Representing of the way
+
+#print(len(fin))
 for i in range(len(fin) - 1):
     result_edges.append((fin[i], fin[i + 1]))
     # print("({},{})".format(fin[i], fin[i + 1]))
-
 print(result_edges)
+
+#print(len(wat))
+for i in range(len(wat) - 1):
+    result_edges1.append((wat[i], wat[i + 1]))
+print(result_edges1)
+
 
 
 class GraphVisualization:
