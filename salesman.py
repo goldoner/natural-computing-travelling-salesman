@@ -30,14 +30,12 @@ class Tsp:
     def readFromFile(self):
 
         with open("resources/distances.csv") as file:
-            # i = 0
             symbol_to_replace = ";"
             for line in file.readlines():
                 if line.__contains__("FromCity;ToCity;Distance"):
                     continue
                 if line == "\n":
                     continue
-                # i += 1
 
                 fromThe = int(line.split(symbol_to_replace)[0])
                 toThe = int(line.split(symbol_to_replace)[1])
@@ -132,7 +130,7 @@ class Tsp:
         self.children.append(crossovered2[0])
         self.children.append(crossovered2[1])
         self.children.append(crossovered3[0])
-        self.children.append(crossovered4[1])
+        self.children.append(crossovered3[1])
         self.children.append(crossovered4[0])
         self.children.append(crossovered4[1])
         # mutate children by randomize them
